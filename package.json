@@ -1,19 +1,49 @@
 {
-  "name": "story-book",
-  "private": true,
-  "version": "0.0.0",
+  "name": "ce-story-book",
+  "private": false,
+  "version": "0.0.1-rc3",
   "type": "module",
+  "description": "Storybook with Vite and TypeScript",
+  "author": "Carlos EspiPliego",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "keywords": [
+    "storybook",
+    "react",
+    "vite",
+    "typescript",
+    "development"
+  ],
+  "license": "MIT",
+  "homepage": "https://carlos-espipliego.github.io/portfolio-web/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Carlos-EspiPliego/story-book-pruebas"
+  },
+  "files": [
+    "dist/"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
     "dev": "npm run storybook",
-    "build": "tsc -b && vite build",
+    "build": "npm run clean && tsc && npm run copy",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "build-storybook": "storybook build",
+    "clean": "rimraf dist/",
+    "copy": "copyfiles -u 1 src/**/*.css dist/"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -30,10 +60,14 @@
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1",
     "storybook": "^8.2.7",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
